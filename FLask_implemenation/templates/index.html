@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stroke Risk Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(to right, #f8f9fa, #d5e9ec);
+            position: relative;
+        }
+        h1 {
+            color: #006064;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        form {
+            margin: auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #004d40;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #b2dfdb;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 15px;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #26a69a;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chatbot-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chatbot-link img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .chatbot-link img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Predict Your Stroke Risk</h1>
+    <form action="/predict" method="post">
+        <label for="age">Age</label>
+        <input type="text" id="age" name="age" required>
+
+        <label for="avg_glucose_level">Average Glucose Level</label>
+        <input type="text" id="avg_glucose_level" name="avg_glucose_level" required>
+
+       
+        <label for="bmi">BMI</label>
+        <input type="text" id="bmi" name="bmi" required>
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="hypertension">Hypertension</label>
+        <select id="hypertension" name="hypertension">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="heart_disease">Heart Disease</label>
+        <select id="heart_disease" name="heart_disease">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="ever_married">Ever Married</label>
+        <select id="ever_married" name="ever_married">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+
+        <label for="work_type">Work Type</label>
+        <select id="work_type" name="work_type">
+            <option value="Private">Private</option>
+            <option value="Self-employed">Self-employed</option>
+            <option value="Govt_job">Government Job</option>
+            <option value="children">Children</option>
+            <option value="Never_worked">Never Worked</option>
+        </select>
+
+        <label for="residence_type">Residence Type</label>
+        <select id="residence_type" name="residence_type">
+            <option value="Urban">Urban</option>
+            <option value="Rural">Rural</option>
+        </select>
+
+        <label for="smoking_status">Smoking Status</label>
+        <select id="smoking_status" name="smoking_status">
+            <option value="never smoked">Never Smoked</option>
+            <option value="formerly smoked">Formerly Smoked</option>
+            <option value="smokes">Smokes</option>
+            <option value="Unknown">Unknown</option>
+        </select>
+
+        <div class="chatbot-container">
+            <button type="submit">Predict</button>
+            <a href="https://84d21af53f584973f5.gradio.live/" target="_blank" class="chatbot-link">
+                <img src="{{ url_for('static', filename='pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png') }}" alt="Chatbot">
+            </a>
+        </div>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</body>
+</html>
