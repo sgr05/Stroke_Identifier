@@ -8,7 +8,7 @@ Developed a predictive model using Random Forest and  assess stroke risk, achiev
 ## FLASK DEPLOYEMENT
 (<img width="1280" alt="Screenshot 2025-01-17 at 2 23 41 PM" src="https://github.com/user-attachments/assets/a5382b94-95b1-446a-9fec-c09d2b16ceb0" />)
 ## CHAT-BOT INTEGRATION
-I have also intergrated a interactive chatbot Using Groq LLM model.
+I have also intergrated a interactive chatbot Using LLaMA 3 model.Deployed it using Gradio Interface
 ![WhatsApp Image 2025-02-11 at 16 11 26](https://github.com/user-attachments/assets/eb15a25a-14d6-4ed8-afb1-4e00e0e1d827)
 ![WhatsApp Image 2025-02-11 at 16 11 25](https://github.com/user-attachments/assets/e410f120-34b2-41bf-bf18-e82f500fa890)
 
